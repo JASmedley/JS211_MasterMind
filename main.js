@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 let board = [];
-let solution = '';
+let solution = 'abcd';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 const printBoard = () =>  {
@@ -28,13 +28,20 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
-  // your code here
+const generateHint = (guess) => {
+  let GreenPoints = 0
+  let RedPoints = 0
+    
+  return `${GreenPoints}-${RedPoints}`
 }
 
 const mastermind = (guess) => {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  let hint = generateHint(guess);
+  board.push(guess +" "+ hint);
+
+  if (guess == solution) {
+    return 'You guessed it!'
+  }
 }
 
 
