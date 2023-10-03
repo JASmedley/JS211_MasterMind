@@ -31,16 +31,32 @@ const getRandomInt = (min, max) => {
 const generateHint = (guess) => {
   let GreenPoints = 0
   let RedPoints = 0
+  let wordBank = guess.split('')
+
+  for (let i=0; i <= 3; i++){
+    if (solution[i] == wordBank[i]){
+      GreenPoints += 1;
+      wordBank[i] = 'x'
+    } 
     
-  return `${GreenPoints}-${RedPoints}`
-}
+    else if(wordBank.indexOf(solution[i]) > -1){
+          RedPoints += 1;
+        }
+    }
+    return `${GreenPoints}-${RedPoints}`
+  }
+
+
 
 const mastermind = (guess) => {
   let hint = generateHint(guess);
-  board.push(guess +" "+ hint);
-
+  
   if (guess == solution) {
     return 'You guessed it!'
+  }
+
+  else {
+    board.push(guess +" "+ hint);
   }
 }
 
